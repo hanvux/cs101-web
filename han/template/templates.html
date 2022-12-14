@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>A Cool Text Generator ★</title>
+        <link rel ="stylesheet" type="text/css" href="/static/background_css.css"/>
+        <link rel = "icon" href = "/static/purepng.com-froganimalfrogamphibian-981524649989xdkks.png">
+    </head>
+    <body>
+        <div class = "contain-mag">
+            <div class = "left-shape">
+                <div class = "shape_overall" id = "regtangle" style="position:absolute; left: 627px; top: 12px; width: 575px; height: 23px; z-index: 2; background-color: black; border-color: white;">
+                </div>
+                <div class ="shape_overall" id = "another-regtangle" style="position:absolute; left: 627px; top: 12px; width: 573px; height: 550px; z-index: 1; background-color: white; border-color: black; border-style: solid; border-width: 1px;">
+                </div>
+                <div class ="shape_overall" id="oval-shape" style="position:absolute; left: 820px; top: 505px; width: 36px; height: 36px; z-index: 4; background-color: white; border-color: black; border-radius: 100%; border-style: solid; border-width: 1px; box-sizing: border-box;">
+                </div>
+            </div>
+            <div class = right-shape>
+                <div class ="shape_overall" id="please-follow-semi-regtangular" style="position:absolute; left: 298px; top: 194px; width: 280px; height: 40px; z-index: 3; background-color: white; border-color: black; border-radius: 20px; border-style: solid; border-width: 1px; box-sizing: border-box;">
+                </div>
+                <div class ="shape_overall" id="one-box" style="position:absolute; left: 28px; top: 221px; width: 36px; height: 36px; z-index: 2; background-color: rgb(51,156,22); border-color: black; border-style: solid; border-width: 1px; box-sizing: border-box;">
+                </div>
+                <div class ="shape_overall" id="insert-number-box" style="position:absolute; left: 28px; top: 221px; width: 384px; height: 120px; z-index: 1; background-color: white; border-color: black; border-radius: 0px; border-style: solid; border-width: 1px; box-sizing: border-box;">
+                </div>
+
+                <div class ="shape_overall" id="two-box" style="position:absolute; left: 28px; top: 400px; width: 36px; height: 36px; z-index: 2; background-color: rgb(51,156,22); border-color: black; border-radius: 0px; border-style: solid; border-width: 1px; box-sizing: border-box;">
+                </div>
+                <div class ="shape_overall" id="insert-word" style="position:absolute; left: 28px; top: 400px; width: 520px; height: 120px; z-index: 1; background-color: white; border-color: black; border-radius: 0px; border-style: solid; border-width: 1px; box-sizing: border-box;">
+                </div>
+
+                <img src="/static/purepng.com-froganimalfrogamphibian-981524649989xdkks.png" style="position: absolute; left: 350px; top: 230px; height: 190px; z-index: 5;">
+
+                <div class ="shape_overall" id="a-cool-semi-regtangle" style="position:absolute; left: 69px; top: 52px; width: 200px; height: 40px; z-index: -1; background-color: rgb(51,156,22); border-color: black; border-radius: 20px; border-style: solid; border-width: 1px; box-sizing: border-box;">
+                </div>
+
+            </div>
+            <div class="button-chill">
+                <button class="numberBox">Number of characters</button>
+                <button class="wordBox">Insert the Prefix</button>
+    
+            </div>
+            <form action= "{{url_for("gfg")}}" method="POST">
+                <input type="number" id="quantity" name="quantity">
+                <input type="text" id="textinput" name="prefix">
+                <button type="submit" class="result" name="resultbutton">Result</button>
+            </form>
+            <div class="text">
+                <div class ="text-position" id="text-text" style="position:absolute; left: 250px; top: -10px; z-index: 0;">
+                    <span style="font-weight:400;letter-spacing:1.3px;font-variation-settings:'wght' 387;font-family:DomLovesMary;color:rgba(51, 156, 22, 1); -webkit-text-stroke: 1px black;font-size:145px">Text</span>
+    
+                </div>
+                <div class ="text-position" id="text-a-cool" style="position:absolute; left: 120px; top: 53px; z-index: 0;"> 
+                    <span style="font-weight:400;letter-spacing:1.3px;font-family:Montserrat-VariableFont_wght;font-size:30px; color: white">A Cool</span>
+                </div>
+                <div class ="text-position" id="text-generator" style="position:absolute; left: 140px; top: 40px; z-index: 0;">
+                    <span style="font-weight:400;letter-spacing:1.3px;font-size:145px;font-family:DomLovesMary;color:rgba(51, 156, 22, 1); -webkit-text-stroke: 1px black;">Generator</span>
+                </div>
+                <div class ="text-position" id="please" style="position:absolute; left: 327px; top: 205px; z-index: 5;">
+    
+                    <span style="font-weight:400;letter-spacing:1.3px;font-family:Montserrat-VariableFont_wght;font-size:15px; color: black">Please follow the number</span>
+                </div> 
+                <div class ="text-position" id="1" style="position:absolute; left: 42px; top: 227px; z-index: 5;">
+                    <span style="font-weight:400;letter-spacing:1.3px;font-family:Montserrat-VariableFont_wght;font-size:20px; color: white">1</span>
+                
+                <div class ="text-position" id="2" style="position:absolute; left: -2px; top: 178px; z-index: 5;">
+                    <span style="font-weight:400;letter-spacing:1.3px;font-family:Montserrat-VariableFont_wght;font-size:20px; color: white">2</span>
+                </div>
+    
+                <div class ="text-position" id="2" style="position:absolute; left: 790px; top: 285px; z-index: 5;">
+                    <span style="font-weight:400;letter-spacing:1.3px;font-family:Montserrat-VariableFont_wght;font-size:20px; color: black">3</span>
+                </div>
+    
+
+            </div>
+            
+        </div>
+    </body>
+</html>
