@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>A Cool Text Generator ★ | 1</title>
+        <link rel ="stylesheet" type="text/css" href="background_css.css"/>
+        <link rel = "icon" href = "purepng.com-froganimalfrogamphibian-981524649989xdkks.png">
+        <script scr="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
+        <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    </head>
+    <body>
+        <py-script src="backend.py"></py-script>
+        <form>
+            <div id="output"></div>
+            <div>Accuracy level:</div>
+            <input id="quantity" name="quantity">
+            <input id="input-word" name="input-word">
+            <button id="result-1">Run</button>
+            <button id="continue">Continue</button>
+            <button id="noo">Oh hell nah</button>
+        </form>
+    </body>

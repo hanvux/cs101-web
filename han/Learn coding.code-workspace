@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../Learn coding"
+		},
+		{
+			"path": "../../xin chào đây là hân/han"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "han"
+	}
+}
