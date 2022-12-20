@@ -1,65 +1,48 @@
-
-import js
-from js import document
 import random
 import os
 import sys
+from js import document
+from pyodide import create_proxy
 
-one_keyboard = Element("1-keyboard")
-two_para = Element("2-para")
+def _mode_change(*args, **kwargs):
+    choice = document.getElementById("choices").value
+    if choice == 'one':
+        document.getElementById("number").disabled = True
+    else:
+        document.getElementById("number").disabled = False
+mode_change = create_proxy(_mode_change)
+document.getElementById("choices").addEventListener("input", mode_change)
 
-t = Element("continue")
-f = Element("noo")
+def _text_generator(*args, **kwargs):
+    def markov_lib(key, character1):
+        data_sample = "moby-dick.txt"
+        text_data = open(data_sample, 'r').read()
+        text_data = ''.join([i for i in text_data if not i.isdigit()]).replace("\n", " ").split(' ')
+        markov_lib = {}
 
-def markov_lib(key, character1):
-    data_sample = "moby-dick.txt"
-    text_data = open(data_sample, 'r').read()
-    text_data = ''.join([i for i in text_data if not i.isdigit()]).replace("\n", " ").split(' ')
-    markov_lib = {}
+        for i in range(len(text_data)-key):
+            word = " ".join(text_data[i:i+key])
+            if word.lower() in markov_lib.keys():
+                markov_lib[word.lower()].append(text_data[i+key])
+            else:
+                markov_lib[word.lower()] = [text_data[i+key]]
 
-    for i in range(len(text_data)-key):
-        word = " ".join(text_data[i:i+key])
-        if word.lower() in markov_lib.keys():
-            markov_lib[word.lower()].append(text_data[i+key])
-        else:
-            markov_lib[word.lower()] = [text_data[i+key]]
+        try:
+            character2 = random.choice(markov_lib[character1.lower()])
+        except KeyError as e:
+            return ("fail")
+        return character2
 
-    try:
-        character2 = random.choice(markov_lib[character1.lower()])
-    except KeyError as e:
-        return ("fail")
-    return character2
+    choice = document.getElementById("choices").value
+    acc = document.getElementById("accuracy").value
+    key = int(acc)
 
-def keyboard():
-    key = Element('quantity').element.value
-    first_word = Element('input-word').element.value
-    message = first_word
-    while(True):
-        os.system('cls')
-        first_word = " ".join(message.split()[0-key:])
-        predicted_next_word = markov_lib(key,first_word)
-        if predicted_next_word == "fail":
-            print("-------------------------\nThe training text is not big enough to predict the next word. Exited")
-            sys.exit(1)
-        response = input(message +" ["+predicted_next_word+"] ")
+    character1 = document.getElementById("word").value
 
-        if response == "t" or response == "T":
-            #os.system('cls')
-            message = message + " " + predicted_next_word
-        if response == "f" or response == "F":
-            os.system('cls')
-            response = input(message + " ")
-            message = message + " " +response
+    number = document.getElementById("number").value
+    word_count = int(number)
 
-        if response == "E" or response == "e":
-            print(message)
-            break
-
-def text_generator():
-    choice = input("Choose the functionality: \n 1 - Make a sentence\n 2 - Generate a paragraph with chosen number of words \n Your choice: ")
-    key = int(input("Choose your accuracy level: "))
-    character1 = input("Input your first word: ")
-    if choice == "1":
+    if choice == "one":
         sentence_stopper = ['.', '?', '!']
         message = character1.capitalize()
         while message[-1] not in sentence_stopper:
@@ -68,12 +51,10 @@ def text_generator():
                 message += " " + character2
                 character1 = " ".join((message.split())[-(key):])
             except KeyError as e:
-                print("-------------------------\nThe training text is not big enough to generate the next word. Exited")
-                return (message)
-        return (message)
+                document.getElementById("output").innerText = "The training text is not big enough to generate the next word. Exited"
+        document.getElementById("output").innerText = f"The result is: {message}"
 
-    if choice == "2":
-        word_count = int(input("The number of words want to be generated: "))
+    else:
         message = character1.capitalize()
         for i in range(word_count):
             try:
@@ -81,10 +62,10 @@ def text_generator():
                 message += " " + character2
                 character1 = " ".join((message.split())[-(key):])
             except KeyError as e:
-                print("-------------------------\nThe training text is not big enough to generate the next word. Exited")
-                return(message)
-        return(message)
+                document.getElementById("output").innerText="-------------------------\nThe training text is not big enough to generate the next word. Exited"
+        document.getElementById("output").innerText = f"The result is: {message}"
 
+text_generator = create_proxy(_text_generator)
+document.getElementById("result-btn").addEventListener("click", text_generator)
 
-def para():
-    print(text_generator())
+_mode_change()

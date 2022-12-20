@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>A Cool Text Generator ★ | 2</title>
+        <link rel = "icon" href = "purepng.com-froganimalfrogamphibian-981524649989xdkks.png">
+        <script scr="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
+        <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    </head>
+<body>
+    <py-script>
+from js import document
+from pyodide import create_proxy
+
+print(document.getElementById("ret").value)
+    </py-script>
+    <div class="grid grid-rows-4 p-4 bg-blue-100 border-2 justify-items-left">
+        <div>
+            <select name="flight-mode" id="flight-mode-select">
+                <option value="one">One Way</option>
+                <option value="round">Round Trip</option>
+            </select>
+        </div>
+        <div>
+            <h4 class="font-semibold">Departure Date</h4>
+            <input id = "dep" class="w-3/4 bg-white border-4">
+        </div>
+        <div>
+            <h4 class="font-semibold">Return Date</h4>
+            <input id="ret" class="w-3/4 bg-white border-4">
+        </div>
+        <div>
+            <button id="book-flight" class="p-2 my-2 bg-green-200 border-2 border-gray-400 rounded-lg">Book Flight</button>
+            <p id="flight-info" class="italic">Flight Info will go here</p>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>A Cool Text Generator ★ | 2</title>
+        <link rel = "icon" href = "purepng.com-froganimalfrogamphibian-981524649989xdkks.png">
+        <script scr="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
+        <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    </head>
+    <body>
+        <py-script src="backend.py"></py-script>
+        <label for="choices"></label>
+        <select id="choices">
+            <option value="one">Make a sentence</option>
+            <option value="two">Generate a paragraph with chosen number of words</option>
+        </select>
+        <div>
+            <label for="accuracy">Choose your accuracy level:</label>
+            <input id="accuracy" type ="number">
+        </div>
+        <div>
+            <label for="word">Input your first word:</label>
+            <input id="word" type ="text">
+        </div>
+        <div>
+            <label for="number">The number of words want to be generated:</label>
+            <input id="number" type ="number">
+        </div>
+        <div>
+            <button id="result-btn" type="submit">Result</button>
+            <p id="output"></p>
+        </div>
+    </body>

@@ -32,7 +32,6 @@ def keyboard():
         predicted_next_word = markov_lib(key,first_word)
         if predicted_next_word == "fail":
             print("-------------------------\nThe training text is not big enough to predict the next word. Exited")
-            sys.exit(1)
         response = input(message +" ["+predicted_next_word+"] ")
 
         if response == "t" or response == "T":
@@ -61,8 +60,7 @@ def text_generator():
                 character1 = " ".join((message.split())[-(key):])
             except KeyError as e:
                 print("-------------------------\nThe training text is not big enough to generate the next word. Exited")
-                return (message)
-        return (message)
+        print (message)
 
     if choice == "2":
         word_count = int(input("The number of words want to be generated: "))
@@ -74,14 +72,13 @@ def text_generator():
                 character1 = " ".join((message.split())[-(key):])
             except KeyError as e:
                 print("-------------------------\nThe training text is not big enough to generate the next word. Exited")
-                return(message)
-        return(message)
+        print(message)
 
 def main_run():
     choice = input("Hey there, welcome to our program\n Please choose the functionality :> \n 1 - Keyboard prediction \n 2- Paragraph generator \n Your choice: ")
     if choice == "1":
         keyboard()
     if choice == "2":
-        print(text_generator())
+        text_generator()
 
 main_run()
